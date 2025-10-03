@@ -38,6 +38,7 @@ class TakePanoramaClient : ClientModInitializer {
 
                 when (counter) {
                     0 -> {
+                        client.gameRenderer.isRenderingPanorama = true
                         client.options.fov.value = 90
                         client.options.hudHidden = true
                         client.window.setWindowedSize(1024, 1024)
@@ -47,7 +48,7 @@ class TakePanoramaClient : ClientModInitializer {
                         client.player!!.pitch = 0.0f
                     }
 
-                    1 -> {
+                    10 -> {
                         l = 0
                         ScreenshotRecorder.saveScreenshot(
                             client.runDirectory, "panorama_$l.png", client.framebuffer
@@ -56,7 +57,7 @@ class TakePanoramaClient : ClientModInitializer {
                         client.player!!.pitch = 0.0f
                     }
 
-                    2 -> {
+                    20 -> {
                         l = 1
                         ScreenshotRecorder.saveScreenshot(
                             client.runDirectory, "panorama_$l.png", client.framebuffer
@@ -65,7 +66,7 @@ class TakePanoramaClient : ClientModInitializer {
                         client.player!!.pitch = 0.0f
                     }
 
-                    3 -> {
+                    30 -> {
                         l = 2
                         ScreenshotRecorder.saveScreenshot(
                             client.runDirectory, "panorama_$l.png", client.framebuffer
@@ -74,7 +75,7 @@ class TakePanoramaClient : ClientModInitializer {
                         client.player!!.pitch = 0.0f
                     }
 
-                    4 -> {
+                    40 -> {
                         l = 3
                         ScreenshotRecorder.saveScreenshot(
                             client.runDirectory, "panorama_$l.png", client.framebuffer
@@ -83,7 +84,7 @@ class TakePanoramaClient : ClientModInitializer {
                         client.player!!.pitch = -90.0f
                     }
 
-                    5 -> {
+                    50 -> {
                         l = 4
                         ScreenshotRecorder.saveScreenshot(
                             client.runDirectory, "panorama_$l.png", client.framebuffer
@@ -92,7 +93,7 @@ class TakePanoramaClient : ClientModInitializer {
                         client.player!!.pitch = 90.0f
                     }
 
-                    6 -> {
+                    60 -> {
                         l = 5
                         ScreenshotRecorder.saveScreenshot(
                             client.runDirectory, "panorama_$l.png", client.framebuffer
@@ -101,7 +102,8 @@ class TakePanoramaClient : ClientModInitializer {
                 }
                 counter++
 
-                if (counter >= 6) {
+                if (counter > 60) {
+                    client.gameRenderer.isRenderingPanorama = false
                     counter = 0
                     isTakeing = false
                 }
